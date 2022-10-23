@@ -1,5 +1,5 @@
 # 2022_CoffeeHouseGames
-A series of educational math games within a framework with a dashboard, audio manager, game manager, scorekeeper.
+A series of educational math games within a framework that includes a dashboard, audio manager, game manager & a scorekeeper.
 
 - A Game Manager keeps track of various game states (pause, game over, TimeScale).
 - An Audio Manager loads and plays audio clips when called upon. For simplicity, all games use the same audio effects until time may be invested in 'beefing it up.'.
@@ -22,6 +22,7 @@ Aside from the above mentioned game panels we have the following additional pane
 
 This project all began with the desire to create a change-giving math trainer to help people develop the necessary skills to perform a basic function at a high level.
 Because math is a constant companion I run calculations all day long, as a result I decided to add more varied and possibly more complex methods of challenging others using math as a base.
+
 This led to the creation of the next three games.
 
 Enjoy at your own risk!
