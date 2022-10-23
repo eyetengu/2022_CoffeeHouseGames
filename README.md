@@ -1,10 +1,10 @@
 # 2022_CoffeeHouseGames
 A series of educational math games within a framework with a dashboard, audio manager, game manager, scorekeeper.
 
-A Game Manager keeps track of various game states (pause, game over, TimeScale).
-An Audio Manager loads and plays audio clips when called upon. For simplicity, all games use the same audio effects until time may be invested in 'beefing it up.'.
-A Scorekeeper keeps track of the score and attempts in each game, displays them in the Dashboard and calculates an overall score and overall attempts.
-A Background Audio Manager loads specific music/audio for each game and yet allows the player to play the next track on a loop of 8 audio(includes a null track).
+- A Game Manager keeps track of various game states (pause, game over, TimeScale).
+- An Audio Manager loads and plays audio clips when called upon. For simplicity, all games use the same audio effects until time may be invested in 'beefing it up.'.
+- A Scorekeeper keeps track of the score and attempts in each game, displays them in the Dashboard and calculates an overall score and overall attempts.
+- A Background Audio Manager loads specific music/audio for each game and yet allows the player to play the next track on a loop of 8 audio(includes a null track).
 
 The games themselves are as follows:
 - MakingChange- a coffeehouse-based edu-tainment based on an order placed, amount tendered, change given
