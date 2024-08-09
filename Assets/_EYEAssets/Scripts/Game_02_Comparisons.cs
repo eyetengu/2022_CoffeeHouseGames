@@ -96,14 +96,17 @@ public class Game_02_Comparisons : MonoBehaviour
         {
             Audio_Manager.Instance.PlayGreatClip();
 
-            _playerMessage.text = _successStrings[_successValue];
+            UI_Manager.Instance.UpdatePlayerMessage(_successStrings[_successValue]);
+//            _playerMessage.text = _successStrings[_successValue];
             _successValue++;
             if (_successValue > _successStrings.Length - 1)
                 _successValue = 0;
         }
         else
         {
-            _playerMessage.text = "CORRECT";
+            UI_Manager.Instance.UpdatePlayerMessage("CORRECT");
+
+ //           _playerMessage.text = "CORRECT";
             Audio_Manager.Instance.PlayGoodClip();
         }
 
@@ -117,7 +120,9 @@ public class Game_02_Comparisons : MonoBehaviour
         _numberOfCorrectInARow = 0;
         _stringOfCorrect_text.text = _numberOfCorrectInARow.ToString();
 
-        _playerMessage.text = "INCORRECT";
+        UI_Manager.Instance.UpdatePlayerMessage("INCORRECT");
+
+ //       _playerMessage.text = "INCORRECT";
 
         StartCoroutine(DelayClearPlayerMessage());
     }
@@ -128,7 +133,10 @@ public class Game_02_Comparisons : MonoBehaviour
         Stats_Manager.Instance.UpdateGame_02_Stats(_numberCorrect, _numberAttempts);
 
         yield return new WaitForSeconds(2);
-        _playerMessage.text = "";
+        
+        UI_Manager.Instance.UpdatePlayerMessage("");
+//        _playerMessage.text = "";
+
         ChooseNewValues();
     }
 }

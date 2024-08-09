@@ -119,15 +119,18 @@ public class Game_03_Percentages_Decimals_Fractions : MonoBehaviour
     void Correct()
     {
         _numberCorrect++;
+        UI_Manager.Instance.UpdatePlayerMessage("CORRECT");
 
-        _playerMessage.text = "CORRECT";
+//        _playerMessage.text = "CORRECT";
 
         StartCoroutine(DelayClearPlayerMessage());
     }
 
     void Incorrect()
     {
-        _playerMessage.text = "INCORRECT";
+        UI_Manager.Instance.UpdatePlayerMessage("INCORRECT");
+
+//        _playerMessage.text = "INCORRECT";
 
         StartCoroutine(DelayClearPlayerMessage());
     }
@@ -137,8 +140,10 @@ public class Game_03_Percentages_Decimals_Fractions : MonoBehaviour
         Stats_Manager.Instance.UpdateGame_03_Stats(_numberCorrect, _numberAttempt);
 
         yield return new WaitForSeconds(2);
-        
-        _playerMessage.text = "";
+
+        UI_Manager.Instance.UpdatePlayerMessage("");
+
+ //       _playerMessage.text = "";
         DisplayRandomPercentValue();
     }
 }

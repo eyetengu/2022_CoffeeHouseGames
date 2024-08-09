@@ -40,10 +40,12 @@ public class Stats_Manager : MonoBehaviour
     //CORE FUNCTIONS
     public void UpdateGame_01_Stats(int correct, int attempts)
     {
+        Debug.Log("Updating Game 1");
+
         _correct_01 += correct;
         _attempt_01 += attempts;
 
-        _game_01_Display.text = "GAME 01: " + _correct_01 + " / " + _attempt_01;
+        _game_01_Display.text = _correct_01 + " / " + _attempt_01;
     }
 
     public void UpdateGame_02_Stats(int correct, int attempts)
@@ -51,7 +53,7 @@ public class Stats_Manager : MonoBehaviour
         _correct_02 += correct;
         _attempt_02 += attempts;
 
-        _game_02_Display.text = "GAME 02: " + _correct_02 + " / " + _attempt_02;
+        _game_02_Display.text = _correct_02 + " / " + _attempt_02;
     }
 
     public void UpdateGame_03_Stats(int correct, int attempts)
@@ -59,7 +61,7 @@ public class Stats_Manager : MonoBehaviour
         _correct_03 += correct;
         _attempt_03 += attempts;
 
-        _game_03_Display.text = "GAME 03: " + _correct_03 + " / " + _attempt_03;
+        _game_03_Display.text = _correct_03 + " / " + _attempt_03;
     }
 
 }

@@ -66,7 +66,9 @@ public class Game_01_ChangeDue : MonoBehaviour
             var randomItem = Random.Range(0, _shopInventory.Length);
             orderDetails += _shopInventory[randomItem] + "\n";
             orderPrices += "$ " + _shopPrices[randomItem].ToString("F2") + "\n";
-            _orderTotal += _shopPrices[randomItem];
+            Debug.Log(_orderTotal + " BEFORE");
+            _orderTotal += Mathf.Round(_shopPrices[randomItem] * 100f) / 100f;
+            Debug.Log(_orderTotal + " AFTER");
 
             _orderItems.text = orderDetails;
             _orderPrices.text = orderPrices;
@@ -77,19 +79,24 @@ public class Game_01_ChangeDue : MonoBehaviour
         _amountTenderedField.text = "The Customer Has Given You $ " + _amountTendered.ToString("F2"); 
         _exactChange = _amountTendered - _orderTotal;
 
+        Debug.Log(_amountTendered.ToString("F2") + " / " + _orderTotal.ToString("F2"));
     }
 
     public void CheckUserInput()
     {
         string inputValue = _userInputField.text;
+        
+        string exactChange = _exactChange.ToString("F2");
+        Debug.Log("Exact Change: " + exactChange);
+        
+        _game_01_Attempts++;
 
-        if (inputValue == _exactChange.ToString("F2"))
+        if (inputValue == exactChange)
             Correct();
         else
             Incorrect();
-        Debug.Log(inputValue + " / " + _exactChange);
+        Debug.Log(inputValue + " / " + exactChange);
 
-        _game_01_Attempts++;
 
         StartCoroutine(DelayClearPlayerMessage());
     }
@@ -101,7 +108,8 @@ public class Game_01_ChangeDue : MonoBehaviour
         {
             Audio_Manager.Instance.PlayGreatClip();
 
-            _playerMessageField.text = _greatMsgText[_greatMsgID];
+            UI_Manager.Instance.UpdatePlayerMessage(_greatMsgText[_greatMsgID]);
+//            _playerMessageField.text = _greatMsgText[_greatMsgID];
 
             _greatMsgID++;
             if (_greatMsgID > _greatMsgText.Length - 1)
@@ -110,8 +118,9 @@ public class Game_01_ChangeDue : MonoBehaviour
         else
         {
             Audio_Manager.Instance.PlayGoodClip();
+            UI_Manager.Instance.UpdatePlayerMessage("CORRECT");
 
-            _playerMessageField.text = "CORRECT";
+ //           _playerMessageField.text = "CORRECT";
         }
 
         _game_01_Correct++;
@@ -122,8 +131,9 @@ public class Game_01_ChangeDue : MonoBehaviour
     void Incorrect()
     {
         Audio_Manager.Instance.PlayBadClip();
+        UI_Manager.Instance.UpdatePlayerMessage("INCORRECT");
 
-        _playerMessageField.text = "INCORRECT";
+//        _playerMessageField.text = "INCORRECT";
         _correctInARow = 0;
 
         CorrectInARowDisplay();
@@ -146,8 +156,9 @@ public class Game_01_ChangeDue : MonoBehaviour
     IEnumerator DelayClearPlayerMessage()
     {
         yield return new WaitForSeconds(2);
+        UI_Manager.Instance.UpdatePlayerMessage("");
 
-        _playerMessageField.text = "";
+//        _playerMessageField.text = "";
         _userInputField.text = "";
 
         AcceptCustomerOrder();
